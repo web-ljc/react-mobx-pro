@@ -1,22 +1,34 @@
 import { Component } from "react";
 import { observer, inject } from "mobx-react";
 
-@inject('ProductsStore') // 对应store映射到组件
+@inject('ProductsStore', 'CartStore') // 对应store映射到组件
 @observer
 export default class Products extends Component{
+  // 初始化加载数据
+  componentDidMount() {
+    this.props.ProductsStore.getAllProducts()
+  }
   render() {
-    const {count, items, increment, totalPrice, changeFn} = this.props.ProductsStore
-    console.info(count, items.length, 9)
+    const { all } = this.props.ProductsStore
+    const { addToCart } = this.props.CartStore
     return(
       <div>
         <h2>Products</h2>
-        { count }
-        <button onClick={() => changeFn(100)}>Increment</button>
-        <p>{totalPrice}</p>
-        <p>{totalPrice}</p>
-        <p>{totalPrice}</p>
-        <p>{totalPrice}</p>
-        <p>{totalPrice}</p>
+        <ul>
+          {
+            all.map(item => (
+              <li key={item.id}>
+                {item.title} - {item.price} * {item.inventory}
+                <br />
+                <button
+                  disabled={item.inventory<=0}
+                  onClick={() => addToCart(item)}>
+                    {item.inventory <= 0 ? 'Sold Out' : 'Add to cart'}
+                </button>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     )
   }
