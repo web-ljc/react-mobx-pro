@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# React + Mobx
+> 项目使用React技术 + Mobx技术
+> Mobx是透明的函数响应式编程，使得状态管理变得简单和可扩展
+> 事件Actions 修改 State 更新 Computed Values 触发 Reactions 调用事件
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Mobx 和 Redux 的对比
+- redux将数据保存在单一的store中，而mobx将数据保存在分散的多个store中
+- redux使用plain object保存数据，需要手动处理变化后的操作，mobx使用observable保存数据，数据变化后自动处理响应的操作
+- redux使用的是不可变状态，意味着状态只是只读的，不能直接去修改它，而是应该返回一个新的状态，同时使用纯函数。mobx中状态是可变的，可以直接对其进行修改
+- mobx相对来说比较简单，在其中有很多的抽象，mobx使用的更多是面向对象的思维。redux会比较复杂，因为其中的函数式编程思想掌握起来不是那么容易，需要借助一系列的中间件来处理异步和副作用
+- mobx中有更多的抽象和封装，所以调用起来复杂，同时结果更难预测。redux提供可以进行时间回溯的开发工具，同时纯函数以及更少的抽象，让调试变得更加容易
+```
+mobx: 面向对象思维 多个store、observable自动响应变化操作、mobx状态可变，直接修改、更多的抽象和封装，调试复杂结果难以预测
+
+redux：函数式编程思想 单一store， plan object保存数据，手动处理变化后的操作、使用不可变状态，意味着状态只读，使用纯函数修改，返回的是一个新的状态，提供时间回溯的开发工具。
+```
 ## Available Scripts
-
 In the project directory, you can run:
-
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
 ### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
